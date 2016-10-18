@@ -1,13 +1,12 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
-import {provideStore} from "./app.store";
-import {rootReducer} from "../reducers/root.reducer";
+import {Store} from "./app.store";
 
 
 @NgModule({
   declarations: [AppComponent],
-  providers   : [provideStore(rootReducer)],
+  providers   : [Store],
   imports     : [BrowserModule],
   bootstrap   : [AppComponent]
 })

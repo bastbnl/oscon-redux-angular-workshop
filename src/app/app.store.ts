@@ -4,8 +4,8 @@ export class Store {
 
   private _store;
 
-  constructor(reducer) {
-    this._store = createStore(reducer, compose(
+  constructor() {
+    this._store = createStore((state = {}) => state, compose(
         window['devToolsExtension '] && window['devToolsExtension()']
     ))
   }
@@ -20,12 +20,5 @@ export class Store {
 
   subscribe(listener) {
     return this._store.subscribe(listener);
-  }
-}
-
-export function provideStore(reducer) {
-  return {
-    provide   : Store,
-    useFactory: () => new Store(reducer)
   }
 }
