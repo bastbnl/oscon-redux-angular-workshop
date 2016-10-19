@@ -1,13 +1,17 @@
-import {createStore, compose} from "redux";
+import {createStore, compose, combineReducers} from "redux";
+import {rootReducer} from '../reducers/';
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class Store {
 
   private _store;
 
   constructor() {
-    this._store = createStore((state = {}) => state, compose(
-        window['devToolsExtension '] && window['devToolsExtension()']
-    ))
+    //noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
+    this._store = createStore(
+        rootReducer,
+        compose(window.devToolsExtension  && window.devToolsExtension()))
   }
 
   get state() {

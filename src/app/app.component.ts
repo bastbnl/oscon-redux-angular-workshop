@@ -7,7 +7,8 @@ import {Store} from "./app.store";
   encapsulation: ViewEncapsulation.None,
   styleUrls    : ['../assets/bootstrap.css'],
   template     : `
-    <h1>Redux Angular Workshop</h1>    
+    <h1>Redux Angular Workshop</h1>
+    <list></list>    
     `,
 })
 
