@@ -3,7 +3,6 @@ import {rootReducer} from "../reducers/";
 import {Injectable} from "@angular/core";
 import {auth} from "../middlewars/auth";
 
-
 @Injectable()
 export class Store {
 

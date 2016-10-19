@@ -8,6 +8,7 @@ import {Store} from "./app.store";
   styleUrls    : ['../assets/bootstrap.css'],
   template     : `
     <div class="container">
+      <loader></loader>
       <h1 class="page-header">Redux Angular Workshop</h1>       
         <login *ngIf="!_store.state.user.user"></login>
         <list *ngIf="_store.state.user.user" [items]="_store.state.list"></list>      
