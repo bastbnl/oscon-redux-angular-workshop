@@ -1,6 +1,8 @@
-import {createStore, compose, combineReducers} from "redux";
-import {rootReducer} from '../reducers/';
+import {createStore, compose, applyMiddleware} from "redux";
+import {rootReducer} from "../reducers/";
 import {Injectable} from "@angular/core";
+import {auth} from "../middlewars/auth";
+
 
 @Injectable()
 export class Store {
@@ -8,10 +10,13 @@ export class Store {
   private _store;
 
   constructor() {
-    //noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction
+    //noinspection TypeScriptUnresolvedVariable,TypeScriptUnresolvedFunction,TypeScriptValidateTypes
     this._store = createStore(
         rootReducer,
-        compose(window.devToolsExtension  && window.devToolsExtension()))
+        compose(
+            applyMiddleware(auth),
+            window.devToolsExtension && window.devToolsExtension())
+    )
   }
 
   get state() {
@@ -20,9 +25,5 @@ export class Store {
 
   dispatch(action) {
     this._store.dispatch(action);
-  }
-
-  subscribe(listener) {
-    return this._store.subscribe(listener);
   }
 }
