@@ -7,14 +7,18 @@ import {Store} from "./app.store";
   encapsulation: ViewEncapsulation.None,
   styleUrls    : ['../assets/bootstrap.css'],
   template     : `
-    <h1>Redux Angular Workshop</h1>
-    <list></list>    
+    <div class="container">
+      <h1 class="page-header">Redux Angular Workshop</h1>
+      <list [items]="_store.state.list"></list>
+    </div>        
     `,
 })
 
 export class AppComponent {
 
+  private _store: Store;
+
   constructor(store: Store) {
-    console.log(store.state);
+    this._store = store;
   }
 }
